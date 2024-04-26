@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>что делает state в react.js</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>что делает state в react.js</h1>
+<p>В React.js state - это объект JavaScript, который представляет внутреннее состояние компонента. state позволяет компоненту отслеживать изменяющиеся данные и повторно отображать
+    части пользовательского интерфейса в ответ на эти изменения. Компоненты могут вести себя с учетом состояния, что означает, что они могут динамически обновляться и реагировать
+    на взаимодействия пользователей или другие события.</p>
+
+<ol>
+    <li>
+        <h2>Состояние инициализации: </h2>
+        <p>Вы можете инициализировать состояние компонента в его конструкторе с помощью this.state:</p>
+        <strong>
+            <xmp>
+                class MyComponent extends React.Component {
+                constructor(props) {
+                super(props);
+                this.state = {
+                // Initialize state properties here
+                key1: value1,
+                key2: value2,
+                };
+                }
+                }
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>Доступ к состоянию:</h2>
+        <p>Вы можете получить доступ к состоянию с помощью this.state.propertyName методов компонента.</p>
+        <strong>
+            <xmp>
+                render() {
+                return (
+                <div>
+                    <p>{this.state.key1}</p>
+                    <p>{this.state.key2}</p>
+                </div>
+                );
+                }
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>Состояние обновления:</h2>
+        <p>Чтобы обновить состояние, вы должны использовать setState метод. Прямое изменение this.state не вызовет повторный рендеринг, и React полагается на setState, чтобы
+            правильно обновить состояние и запустить повторный рендеринг.</p>
+        <strong>
+            <xmp>
+                handleClick = () => {
+                this.setState({
+                key1: newValue,
+                // You can choose to update only specific properties
+                // and the rest will remain unchanged.
+                });
+                };
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>Асинхронный характер setState:</h2>
+        <p>setState Функция является асинхронной, и React может выполнять несколько setState вызовов по соображениям производительности. Если вам нужно выполнить действие после
+            обновления состояния, вы можете использовать функцию обратного вызова:</p>
+        <strong>
+            <xmp>
+                this.setState({ key: newValue }, () => {
+                // This callback is executed after the state has been updated.
+                console.log('State has been updated');
+                });
+
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <p>Использование state в React позволяет компонентам динамически управлять своими данными, упрощая создание интерактивных и отзывчивых пользовательских интерфейсов.
+            Компоненты с состоянием часто называют "компонентами с сохранением состояния", в отличие от "компонентов без состояния", которые не управляют никаким внутренним
+            состоянием и полагаются исключительно на свои реквизиты.</p>
+    </li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Основные хуки в react</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Основные хуки в react</h1>
+<p>Перехватчики реакции - это функции, которые позволяют функциональным компонентам использовать функции состояния и жизненного цикла, которые ранее были доступны только в
+    компонентах класса. Вот так</p>
+
+
+<ol>
+    <li>
+        <h2>useState:</h2>
+        <p>Позволяет функциональным компонентам управлять состоянием.</p>
+        <strong>
+            <xmp>
+                import React, { useState } from 'react';
+
+                function ExampleComponent() {
+                const [count, setCount] = useState(0);
+
+                return (
+                <div>
+                    <p>Count: {count}</p>
+                    <button onClick={()
+                    => setCount(count + 1)}>Increment</button>
+                </div>
+                );
+                }
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>useEffect:</h2>
+        <p>Позволяет выполнять побочные эффекты в функциональных компонентах, такие как выборка данных, подписки или ручное изменение DOM.</p>
+        <strong>
+            <xmp>
+                import React, { useState, useEffect } from 'react';
+
+                function ExampleComponent() {
+                const [data, setData] = useState(null);
+
+                useEffect(() => {
+                // Effect code here (e.g., data fetching)
+                // Cleanup function can be returned for cleanup operations
+
+                return () => {
+                // Cleanup code here (optional)
+                };
+                }, []); // Dependency array to control when the effect runs
+                }
+
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>useContext:</h2>
+        <p>Обеспечивает доступ к значению контекста React в функциональном компоненте.</p>
+        <strong>
+            <xmp>
+                import React, { useContext } from 'react';
+                import MyContext from './MyContext';
+
+                function ExampleComponent() {
+                const contextValue = useContext(MyContext);
+
+                return (
+                <div>
+                    <p>Context Value: {contextValue}</p>
+                </div>
+                );
+                }
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>useReducer:</h2>
+        <p>Более продвинутый инструмент управления состоянием, который полезен для управления сложной логикой состояния.</p>
+        <strong>
+            <xmp>
+                import React, { useReducer } from 'react';
+
+                const initialState = { count: 0 };
+
+                function reducer(state, action) {
+                switch (action.type) {
+                case 'increment':
+                return { count: state.count + 1 };
+                default:
+                return state;
+                }
+                }
+
+                function ExampleComponent() {
+                const [state, dispatch] = useReducer(reducer, initialState);
+
+                return (
+                <div>
+                    <p>Count: {state.count}</p>
+                    <button onClick={()
+                    => dispatch({ type: 'increment' })}>
+                    Increment
+                    </button>
+                </div>
+                );
+                }
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>useCallback and useMemo:</h2>
+        <p>useCallback используется для запоминания функций и предотвращения ненужного повторного рендеринга.
+            useMemo используется для запоминания значений и предотвращения ненужных вычислений.</p>
+        <strong>
+            <xmp>
+                import React, { useState, useCallback, useMemo } from 'react';
+
+                function ExampleComponent({ data }) {
+                const memoizedFunction = useCallback(() => {
+                // Function logic
+                }, [dependency]);
+
+                const memoizedValue = useMemo(() => {
+                // Value calculation logic
+                }, [dependency]);
+                }
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <p>Это некоторые из основных хуков React, которые охватывают управление состоянием, побочные эффекты, контекст и многое другое. Понимание и эффективное использование этих
+            хуков может значительно улучшить опыт разработки функциональных компонентов React.</p>
+    </li>
+</ol>
+
+</body>
+</html>

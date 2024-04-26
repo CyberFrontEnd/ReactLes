@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>пользовательские и встроенные компоненты</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<h1>Пользовательские и встроенные компоненты</h1>
+<p>В React.js пользовательские и встраиваемые компоненты имеют решающее значение для создания модульных и многоразовых пользовательских интерфейсов.
+    Давайте рассмотрим обе концепции.:</p>
+
+<ol>
+    <li>
+        <h2>Пользовательские компоненты:</h2>
+        <p>Пользовательские компоненты в React - это определяемые пользователем компоненты, которые вы создаете для инкапсуляции и организации частей вашего пользовательского
+            интерфейса. Они помогают сделать ваш код более читаемым, ремонтопригодным и многоразовым. Вот базовый пример.:</p>
+        <p>React поставляется уже готовых уже компонентов там где вы видите div, h1, html элементы вы какрас используете встроенные в React компоненты это не html тэги это
+            реакт компоненты а внутри реакта создана логика внутри того как создавать html тэги не посредственно реально в DOM а вот <xmp><Footer text="{text}" /></xmp>
+        </p>
+
+        <p>а вот Footer в данном примере является компонентом который должны создать вы как пользователь реакта И реакт отличает встроеные компонент от пользовательского по первой
+            букве открываюшем теге jsx если буква заглавная значить это пользовательский компонент если буква в нижнем регистре то это встроеный компонент  </p>
+
+        <img src="images/img.jpg" alt="">
+        <strong>
+            <xmp>
+                // CustomButton.js
+                import React from 'react';
+
+                const CustomButton = ({ onClick, label }) => {
+                return (
+                <button onClick={onClick}>
+                    {label}
+                </button>
+                );
+                };
+
+                export default CustomButton;
+
+            </xmp>
+        </strong>
+
+        <p>Вы можете использовать этот пользовательский компонент в другом файле:</p>
+
+        <strong>
+            <xmp>
+                // App.js
+                import React from 'react';
+                import CustomButton from './CustomButton';
+
+                const App = () => {
+                const handleClick = () => {
+                alert('Button clicked!');
+                };
+
+                return (
+                <div>
+                    <h1>Hello React!</h1>
+                    <CustomButton onClick={handleClick} label="Click me"/>
+                </div>
+                );
+                };
+
+                export default App;
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <h2>Встроенные компоненты:</h2>
+        <p>Встроенные компоненты относятся к использованию компонентов внутри других компонентов. Это фундаментальная концепция в React, поскольку она способствует созданию
+            модульного и повторно используемого кода. Например:</p>
+
+        <strong>
+            <xmp>
+                // ParentComponent.js
+                import React from 'react';
+                import CustomButton from './CustomButton';
+
+                const ParentComponent = () => {
+                const handleButtonClick = () => {
+                alert('Button clicked from parent component!');
+                };
+
+                return (
+                <div>
+                    <h2>Parent Component</h2>
+                    <CustomButton onClick={handleButtonClick} label="Click me from parent"/>
+                </div>
+                );
+                };
+
+                export default ParentComponent;
+
+                Здесь ParentComponent встраивается CustomButton компонент.
+            </xmp>
+        </strong>
+    </li>
+
+    <li>
+        <p>Как пользовательские, так и встроенные компоненты играют решающую роль в приложениях React, способствуя повторному использованию кода, ремонтопригодности и модульной
+            структуре. Они позволяют вам разбивать сложные пользовательские интерфейсы на более мелкие, управляемые части, облегчая понимание и поддержку вашего кода.</p>
+    </li>
+</ol>
+
+</body>
+</html>
