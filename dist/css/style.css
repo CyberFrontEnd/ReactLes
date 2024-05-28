@@ -20,11 +20,18 @@ a:hover {
 
 h2,
 h1 {
-  color: #000;
   margin-bottom: 10px;
 }
 
 
+xmp,
+h6,
+h5,
+h4,
+h3,
+h2,
+h1,
+span,
 p {
   color: #ffffff;
 }
@@ -32,6 +39,7 @@ p {
 ol li,
 ul li {
   margin-bottom: 30px;
+  color: #ffffff;
 }
 
 ol {

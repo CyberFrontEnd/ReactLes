@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React.Fragment</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<p>В React React.Fragment есть компонент, который позволяет вам группировать список дочерних элементов без добавления дополнительных узлов в DOM. Это особенно полезно, когда вы
+    хотите вернуть несколько элементов из метода визуализации компонента, не заключая их в ненужный div или другой элемент контейнера.</p>
+
+<h3>Без React.Fragment</h3>
+<strong>
+    <xmp>
+        import React from 'react';
+
+        function App() {
+        return (
+        <div>
+            <h1>Hello, world!</h1>
+            <p>This is a paragraph.</p>
+        </div>
+        );
+        }
+
+        export default App;
+    </xmp>
+</strong>
+
+<h3>С React.Fragment</h3>
+<strong>
+    <xmp>
+        import React from 'react';
+
+        function App() {
+        return (
+        <React.Fragment>
+            <h1>Hello, world!</h1>
+            <p>This is a paragraph.</p>
+        </React.Fragment>
+        );
+        }
+
+        export default App;
+    </xmp>
+</strong>
+
+<h3>Или, используя сокращенный синтаксис:</h3>
+<strong>
+    <xmp>
+        import React from 'react';
+
+        function App() {
+        return (
+        <>
+        <h1>Hello, world!</h1>
+        <p>This is a paragraph.</p>
+    </>
+    );
+    }
+
+    export default App;
+    </xmp>
+</strong>
+
+<h1>Преимущества React.Fragment</h1>
+<ol>
+    <li>
+        <span><b>Избегайте ненужных узлов DOM</b>: используя React.Fragment, вы можете избежать добавления дополнительных элементов в DOM, что может упростить вашу структуру HTML и 
+            потенциально повысить производительность.</span>
+    </li>
+
+    <li>
+        <span><b>Более чистый JSX:</b> Это помогает в написании более чистого JSX, избегая ненужных элементов-оболочек.</span>
+    </li>
+</ol>
+
+<h1>Когда использовать React.Fragment</h1>
+<ol>
+    <li>
+        <span>Когда вам нужно вернуть несколько элементов из компонента.</span>
+    </li>
+
+    <li>
+        <span>Когда вы хотите избежать создания дополнительных элементов DOM.</span>
+    </li>
+
+    <li>
+        <span>Когда вам нужен компонент верхнего уровня, который не отображает ни одного фактического элемента DOM.</span>
+    </li>
+</ol>
+
+<h1>Ключевой атрибут</h1>
+<p>React.Fragment поддерживает атрибут key, если вы визуализируете список элементов и вам нужно предоставить уникальный идентификатор для каждого дочернего элемента.</p>
+<strong>
+    <xmp>
+        function ItemList({ items }) {
+        return (
+        <>
+        {items.map(item => (
+        <React.Fragment key={item.id}>
+            <dt>{item.term}</dt>
+            <dd>{item.description}</dd>
+        </React.Fragment>
+        ))}
+       </>
+      );
+    }
+    </xmp>
+</strong>
+
+<p>Подводя итог, React.Fragment - это полезный инструмент в React для группировки нескольких элементов без добавления дополнительных узлов в DOM, что приводит к очистке кода и
+    потенциально повышению производительности.</p>
+</body>
+</html>
